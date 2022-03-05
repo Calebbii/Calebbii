@@ -4,7 +4,7 @@
 * Learning Python and databases. 😎
 * Understanding how to intergrate different programming languages.
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 
 class SoftwareEngineer:  
 
@@ -16,8 +16,8 @@ class SoftwareEngineer:
     def say_hi(self):
         print("Thanks for dropping by, hope you find some of my work interesting.")   
 
- me = SoftwareEngineer()
- me.say_hi()
+me = SoftwareEngineer()
+me.say_hi()
 
 <!--
 **Calebbii/Calebbii** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
