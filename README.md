@@ -18,17 +18,11 @@
     me.say_hi()
 ``` 
 ```
-const Lucie = {
-  pronouns: "she" | "her",  
+const Caleb = {
+  pronouns: "He" | "him",  
   code: [Javascript, Typescript, HTML, CSS, Angular, Python, Django], 
-  tools: [React, stack overflow, Node, Storybook, Styled-Components, Github, Music],
-  architecture: ["microservices", "Funn", "design system pattern"],
-  techCommunities: {
-                        Manager: "my own managment", 
-                        Building stuff: "Writting product code.",
-                        mentor: "Moringaschool" 
-                      },
- challenge: "I am doing the #100DaysOfCode challenge focused on Angular and typescript" 
+  tools: [React, stack overflow, Node, Styled-Components, Github, Music],
+  challenge: "I am doing the #100DaysOfCode challenge focused on Angular and typescript" 
 }
 ```
 
