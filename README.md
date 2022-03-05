@@ -16,7 +16,22 @@
 
     me = SoftwareEngineer()
     me.say_hi()
-```    
+``` 
+```
+const Lucie = {
+  pronouns: "she" | "her",  
+  code: [Javascript, Typescript, HTML, CSS, Angular, Python, Django], 
+  tools: [React, stack overflow, Node, Storybook, Styled-Components, Github, Music],
+  architecture: ["microservices", "Funn", "design system pattern"],
+  techCommunities: {
+                        Manager: "my own managment", 
+                        Building stuff: "Writting product code.",
+                        mentor: "Moringaschool" 
+                      },
+ challenge: "I am doing the #100DaysOfCode challenge focused on Angular and typescript" 
+}
+```
+
 ## 🌱 Current project
 * Learning Python and databases. 😎
 * Understanding how to intergrate different programming languages.
