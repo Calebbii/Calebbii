@@ -1,4 +1,4 @@
-# Hi there 👋
+# Hi there 👋🏾 I'm Caleb
  
 ## 🌱 Current project
 * Learning Python and databases. 😎
