@@ -3,8 +3,9 @@
 ## 🌱 Current project
 * Learning Python and databases. 😎
 * Understanding how to intergrate different programming languages.
-#!/usr/bin/python
-#-*- coding: utf-8 -*-
+
+##!/usr/bin/python
+##-*- coding: utf-8 -*-
 
 class SoftwareEngineer:  
 
