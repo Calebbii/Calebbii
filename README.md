@@ -1,8 +1,5 @@
 # Hi there 👋🏾 I'm Caleb
- 
-## 🌱 Current project
-* Learning Python and databases. 😎
-* Understanding how to intergrate different programming languages.
+
 
 ##!/usr/bin/python
     ##-*- coding: utf-8 -*-
@@ -19,6 +16,11 @@
 
     me = SoftwareEngineer()
     me.say_hi()
+    
+## 🌱 Current project
+* Learning Python and databases. 😎
+* Understanding how to intergrate different programming languages.
+
 
 <!--
 **Calebbii/Calebbii** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
