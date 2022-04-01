@@ -45,7 +45,7 @@ const Caleb = {
     </a>
   </div>
   
-<div align='center'>
+<div align='center' style="margin-left:1.2cm">
 <h2>GitHub Stats</h2>
 <a align="center"href="https://readme-stats-cfgj2cxdy.vercel.app/api?username=Calebbii&count_private=true&show_icons=true&theme=cobalt">
   <img align="center" src = "https://github-readme-streak-stats.herokuapp.com/?user=Calebbii&">
