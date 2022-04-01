@@ -30,3 +30,37 @@ const Caleb = {
 * Learning Python and databases. 😎
 * Understanding how to intergrate different programming languages.
 
+  <div align="center">
+    <br>
+    <br>
+    <h3>CHECK OUT WHAT I HAVE BEEN DOING: 🤪🤖🤪🤖🤪</h3>
+    <br>
+    <br>
+    
+    <a href="https://github.com/anuraghazra/github-readme-stats" style="margin-left:.5%;">
+    <img align="center" src="https://github-readme-stats.vercel.app/api?username=Calebbii&show_icons=true&theme=radical" />
+    </a>
+    <a href="https://github.com/anuraghazra/convoychat" style="margin-right:.5%;">
+    <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Calebbii&layout=compact" />
+    </a>
+  </div>
+  
+<div align='center'>
+<h2>GitHub Stats</h2>
+<a align="center"href="https://readme-stats-cfgj2cxdy.vercel.app/api?username=Calebbii&count_private=true&show_icons=true&theme=cobalt">
+  <img align="center" src = "https://github-readme-streak-stats.herokuapp.com/?user=Calebbii&">
+</a><br>
+
+#### Profile Visits 
+
+![visitors](https://visitor-badge.glitch.me/badge?page_id=Calebbii.)
+
+<h3 align="center"> 🤝🏻 &nbsp;Connect with Me </h3><br>
+
+<p align="center">
+<a href="https://www.linkedin.com/in/caleb-kiprotich-b141871a6/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Caleb%20Kiprotich Bii-blue?style=flat-square&logo=linkedin"></a>
+<a href="mailto:biicaleb316@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-biicaleb316%40gmail.com-blue?style=flat-square&logo=gmail"></a>
+ 
+</p>
+</div>
+
