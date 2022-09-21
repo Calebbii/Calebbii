@@ -20,14 +20,14 @@
 ```
 const Caleb = {
   pronouns: "He" | "him",  
-  code: [Javascript, Typescript, HTML, CSS, Angular, Python, Django], 
-  tools: [React, stack overflow, Node, Styled-Components, Github, Music],
+  code: [Javascript, Typescript, HTML, CSS, Angular, Python, Django, React, Ruby], 
+  tools: [KATALON, stack overflow, Node, Styled-Components, Github, JMeter],
   challenge: "I am doing the #100DaysOfCode challenge focused on Angular and typescript" 
 }
 ```
 
 ## 🌱 Current project
-* Learning Python and databases. 😎
+* Learning Ruby and databases. 😎
 * Understanding how to intergrate different programming languages.
 
   <div align="center">
