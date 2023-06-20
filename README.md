@@ -51,10 +51,6 @@ const Caleb = {
   <img align="center" src = "https://github-readme-streak-stats.herokuapp.com/?user=Calebbii&">
 </a><br>
 
-#### Profile Visits 
-
-![visitors](https://visitor-badge.glitch.me/badge?page_id=Calebbii.)
-
 <h3 align="center"> 🤝🏻 &nbsp;Connect with Me </h3><br>
 
 <p align="center">
