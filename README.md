@@ -60,7 +60,3 @@ const Caleb = {
 </p>
 </div>
 
-
-
-
-
