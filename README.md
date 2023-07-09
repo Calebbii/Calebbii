@@ -27,7 +27,7 @@ const Caleb = {
 ```
 
 ## 🌱 Current project
-* Learning Ruby and databases. 😎
+* Learning about databases. 😎
 * Understanding how to integrate different programming languages.
 
   <div align="center">
