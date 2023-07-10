@@ -28,7 +28,7 @@ const Caleb = {
 
 ## 🌱 Current project
 * Learning about databases. 😎
-* Understanding how to integrate different programming languages.
+* Understanding how to integrate different programming languages. 
 
   <div align="center">
     <br>
@@ -59,4 +59,5 @@ const Caleb = {
  
 </p>
 </div>
+
 
