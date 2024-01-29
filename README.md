@@ -16,7 +16,7 @@
  <h3 align="center">⚡ I want to impact the lives of others using code.</h3>
  
 <h3 align="center">Connect with me: <p>
-<a href="https://x.com/Calebbiiii?t=hVeAvNFroXkObWl8e4VOsg&s=09" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="https://x.com/Calebbii3?t=hVeAvNFroXkObWl8e4VOsg&s=09" height="30" width="40" /></a>
+<a href="https://x.com/?t=hVeAvNFroXkObWl8e4VOsg&s=09" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="https://x.com/Calebbii3?t=hVeAvNFroXkObWl8e4VOsg&s=09" height="30" width="40" /></a>
 <a href="https://www.linkedin.com/in/caleb-kiprotich-bii-b141871a6" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="https://www.linkedin.com/in/caleb-kiprotich-bii-b141871a6/" height="30" width="40" /></a>
 </p>
 </h3>
