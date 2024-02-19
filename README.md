@@ -75,7 +75,7 @@
     <td>
       <p align="center">
         <a href="https://python.org/" target="_blank" rel="noreferrer">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" width="36" height="36" alt="Redux" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" width="36" height="36" alt="Python" />
       </a>
         <p align="center">Python</p>
       </p>
@@ -163,7 +163,7 @@
     <td>
       <p align="center">
         <a href="https://katalon.com/" target="_blank" rel="noreferrer">
-          <img src="https://d3ml3b6vywsj0z.cloudfront.net/website/product-images/Katalon.jpg" width="36" height="36" alt="Sass" />
+          <img src="https://d3ml3b6vywsj0z.cloudfront.net/website/product-images/Katalon.jpg" width="36" height="36" alt="Katalon" />
       </a>
         <p align="center">KATALON</p>
       </p>
