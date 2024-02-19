@@ -74,10 +74,10 @@
     </td>
     <td>
       <p align="center">
-        <a href="https://redux.js.org/" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/redux-colored.svg" width="36" height="36" alt="Redux" />
+        <a href="https://python.org/" target="_blank" rel="noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" width="36" height="36" alt="Redux" />
       </a>
-        <p align="center">Redux</p>
+        <p align="center">Python</p>
       </p>
     </td>
     <td>
@@ -136,10 +136,10 @@
     </td>
     <td>           
       <p align="center">
-        <a href="https://www.adobe.com/uk/products/xd.html" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/xd-colored.svg" width="36" height="36" alt="XD" />
+        <a href="https://angular.io/" target="_blank" rel="noreferrer">
+          <img src="https://static-00.iconduck.com/assets.00/file-type-angular-icon-1907x2048-tobdkjt1.png" width="36" height="36" alt="Angular" />
       </a>
-        <p align="center">Adobe XD</p>
+        <p align="center">Angular</p>
       </p>
     </td>
   </tr>
@@ -162,10 +162,10 @@
     </td>
     <td>
       <p align="center">
-        <a href="https://sass-lang.com/" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/sass-colored.svg" width="36" height="36" alt="Sass" />
+        <a href="https://katalon.com/" target="_blank" rel="noreferrer">
+          <img src="https://d3ml3b6vywsj0z.cloudfront.net/website/product-images/Katalon.jpg" width="36" height="36" alt="Sass" />
       </a>
-        <p align="center">SASS</p>
+        <p align="center">KATALON</p>
       </p>
     </td>
   </tr>
