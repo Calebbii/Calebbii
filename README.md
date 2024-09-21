@@ -7,7 +7,7 @@
 </p>
 <h3 align="center">A Full Stack Developer .</h3>
 
-<h3 align="center"> 🌱 I’m building <a href="https://www.vennt.io/" target="_blank">VENNT</a></h3>
+<h3 align="center"> 🌱 I’m building <a href="https://www.vennt.io/" target="_blank">Nairobi Exotic</a></h3>
 
 <h3 align="center"> 💬 Ask me about KATALON, Rust and NextJS</h3>
 
