@@ -20,6 +20,13 @@
 </h3>
 
 
+<div>
+    <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
+        <img src="https://github-readme-activity-graph.vercel.app/graph?username=Calebbii&theme=xcode&hide_border=true" alt="Activity graph">
+    </a>
+</div>
+
+
 
 
 <h2 align="center"> My Github Stats & Technologies I use:</h2>
