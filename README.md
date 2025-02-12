@@ -7,13 +7,11 @@
 </p>
 <h3 align="center">A Full Stack Developer .</h3>
 
-<h3 align="center"> 🌱 I’m building <a href="https://www.vennt.io/" target="_blank">Nairobi Exotic</a></h3>
+<h3 align="center"> 🌱 I’m building <a href="https://www.vennt.io/" target="_blank">R&D</a></h3>
 
 <h3 align="center"> 💬 Ask me about KATALON, Rust and NextJS</h3>
 
 <h3 align="center"> 📫 How to reach me <a href="mailto:biicaleb316@gmail.com">biicaleb316@gmail.com</a></h3>
-
- <h3 align="center">⚡ I want to impact the lives of others using code.</h3>
  
 <h3 align="center">Connect with me: <p>
 <a href="https://x.com/?t=hVeAvNFroXkObWl8e4VOsg&s=09" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="https://x.com/Calebbii3?t=hVeAvNFroXkObWl8e4VOsg&s=09" height="30" width="40" /></a>
@@ -22,19 +20,23 @@
 </h3>
 
 
-<h2 align="center"> My Github Stats && Technologies I use:</h2>
+
+
+<h2 align="center"> My Github Stats & Technologies I use:</h2>
 
 <table>
   <tr>
     <td>
-      <a href="https://github.com/calebbii"><img alt="Caleb's' Github Stats" src="https://github-readme-stats.vercel.app/api?username=Calebbii&show_icons=true&count_private=true&theme=react&hide_border=true&bg_color=1d2a3a" />
+      <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <img width="390" src="https://github-readme-stats.vercel.app/api?username=Calebbii&theme=transparent&count_private=true&show_icons=true&rank_icon=github&locale=en" alt="Calebbii's GitHub Stats" />
+  </div>
     </td>
     <td>
        <a href="http://www.github.com/calebbii"><img alt="Contribution" src="https://github-readme-streak-stats.herokuapp.com/?user=calebbii&stroke=ffffff&background=1d2a3a&ring=5BCDEC&fire=5BCDEC&currStreakNum=ffffff&currStreakLabel=5BCDEC&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true" /></a>
     </td>
     </td>
     <td>
-      <a align="center" href="https://github.com/calebbii"><img alt="Caleb's' Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=calebbii&langs_count=8&count_private=true&layout=compact&theme=react&hide_border=true&bg_color=1d2a3a"/></a>
+      <img width="280" src="https://github-readme-stats.vercel.app/api/top-langs?username=Calebbii&theme=transparent&layout=donut&hide=css,php,ClassASP&langs_count=2&border_radius=10&show_icons=true&locale=en" alt="Calebbii's Most Used Languages" />
     </td>
   <tr>
   <tr>
