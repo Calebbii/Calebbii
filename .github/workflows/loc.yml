@@ -11,91 +11,106 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Verify token is available
+        run: |
+          if [ -z "${{ secrets.PERSONAL_TOKEN }}" ]; then
+            echo "::error::PERSONAL_TOKEN secret is missing or empty"
+            exit 1
+          else
+            echo "Token is available (length: ${#PERSONAL_TOKEN} chars)"
+          fi
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
       - name: Install dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y jq
-          curl -sSL https://github.com/XAMPPRocky/tokei/releases/latest/download/tokei-x86_64-unknown-linux-gnu.tar.gz | tar xz -C /usr/local/bin
-          chmod +x /usr/local/bin/tokei
+          sudo apt-get install -y jq cloc
+          curl -sSL https://github.com/XAMPPRocky/tokei/releases/latest/download/tokei-x86_64-unknown-linux-musl.tar.gz | tar xz --wildcards '*/tokei' --strip-components=1
+          sudo mv tokei /usr/local/bin/
       
-      - name: Fetch all repositories
+      - name: Fetch repositories
+        id: fetch-repos
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}  # Using GitHub Secret
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           GITHUB_USER: ${{ github.repository_owner }}
         run: |
           set -e
-          PAGE=1
-          REPOS=""
-          while true; do
-            echo "Fetching page $PAGE of repositories..."
-            RESPONSE=$(curl -f -s -H "Authorization: token $GITHUB_TOKEN" \
-              "https://api.github.com/users/$GITHUB_USER/repos?per_page=100&page=$PAGE")
-            NEW_REPOS=$(echo "$RESPONSE" | jq -r '.[].clone_url')
-            
-            if [ -z "$NEW_REPOS" ]; then
-              echo "No more repositories found"
-              break
-            fi
-            
-            REPOS="$REPOS $NEW_REPOS"
-            PAGE=$((PAGE + 1))
-            
-            # Safety limit to prevent infinite loops
-            if [ $PAGE -gt 10 ]; then
-              echo "Stopping after 10 pages (safety limit)"
-              break
-            fi
-          done
+          echo "Starting repository fetch for user: $GITHUB_USER"
           
-          # Store repositories list
-          echo "REPOS=${REPOS}" >> $GITHUB_ENV
-          echo "Found $(echo $REPOS | wc -w) repositories total"
+          # First, verify API access
+          API_RESPONSE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/users/$GITHUB_USER")
+          echo "API user response: $API_RESPONSE"
+          
+          # Fetch first 3 repos for testing
+          REPOS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/users/$GITHUB_USER/repos?per_page=3" | jq -r '.[].clone_url')
+          
+          echo "Repositories to process:"
+          echo "$REPOS"
+          echo "REPOS=$REPOS" >> $GITHUB_ENV
 
-      - name: Count lines of code
+      - name: Debug first repository
         run: |
-          set -e
+          set -x
+          FIRST_REPO=$(echo "$REPOS" | head -1)
+          echo "Debugging first repo: $FIRST_REPO"
+          
+          git clone --depth 1 "$FIRST_REPO" debug_repo
+          echo "Repository contents:"
+          ls -la debug_repo
+          
+          echo "Tokei output:"
+          tokei debug_repo -o json | jq .
+          
+          echo "CLOC output:"
+          cloc debug_repo --json | jq .
+          
+          rm -rf debug_repo
+
+      - name: Count lines of code (all repos)
+        if: success()
+        run: |
+          set -ex
           TOTAL_LOC=0
           COUNT=0
           
           for REPO in $REPOS; do
             ((COUNT++))
             REPO_NAME=$(basename "$REPO" .git)
-            echo "[$COUNT] Processing $REPO_NAME..."
+            echo "Processing $COUNT: $REPO_NAME"
             
-            # Clone with timeout
-            timeout 300 git clone --depth 1 --quiet "$REPO" temp_repo 2>/dev/null || {
-              echo "! Clone failed or timed out, skipping..."
+            git clone --depth 1 "$REPO" temp_repo || {
+              echo "Clone failed, skipping..."
               continue
             }
             
-            # Count lines
-            LOC=$(tokei -t=All -o json temp_repo | jq '.total.code' || echo 0)
-            TOTAL_LOC=$((TOTAL_LOC + LOC))
-            echo "   → $LOC lines of code"
+            # Try both counters
+            LOC_TOKEI=$(tokei -t=All -o json temp_repo | jq '.total.code' || echo 0)
+            LOC_CLOC=$(cloc temp_repo --json | jq '.SUM.code' || echo 0)
             
-            # Clean up
-            rm -rf temp_repo || true
+            echo "Tokei: $LOC_TOKEI | CLOC: $LOC_CLOC"
+            
+            # Use whichever gives a non-zero result
+            if [ "$LOC_CLOC" -gt 0 ]; then
+              LOC=$LOC_CLOC
+            else
+              LOC=$LOC_TOKEI
+            fi
+            
+            TOTAL_LOC=$((TOTAL_LOC + LOC))
+            rm -rf temp_repo
           done
           
+          echo "Final count: $TOTAL_LOC"
           echo "TOTAL_LOC=$TOTAL_LOC" >> $GITHUB_ENV
-          echo "Total lines counted across all repositories: $TOTAL_LOC"
 
       - name: Update README
+        if: success() && env.TOTAL_LOC != '0'
         run: |
-          if [ -z "$TOTAL_LOC" ]; then
-            echo "Error: TOTAL_LOC not set"
-            exit 1
-          fi
-          
-          # Update README
+          echo "Updating README with total: $TOTAL_LOC"
           sed -i "s/Total Lines of Code Written: .*/Total Lines of Code Written: $TOTAL_LOC/" README.md
-          
-          # Only commit if there are changes
-          git diff --quiet && {
-            echo "No changes to commit"
-            exit 0
-          }
-          
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
           git commit -am "Update total LOC to $TOTAL_LOC [skip ci]"
