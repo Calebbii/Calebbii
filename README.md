@@ -10,9 +10,6 @@
 <!-- ![Lines of code](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2FCalebbii%2FREPO%2Fstats%2Fcode_frequency&query=%24..%5B1%5D&label=Total%20Lines&color=blue) -->
 
 
-Total Lines of Code Written: <!-- TOTAL_LOC -->0<!-- END_TOTAL_LOC -->
-
-
 <h3 align="center">A Full Stack Developer .</h3>
 
 <h3 align="center"> 🌱 I’m building <a href="https://www.vennt.io/" target="_blank">R&D</a></h3>
