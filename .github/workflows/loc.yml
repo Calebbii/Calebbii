@@ -5,11 +5,16 @@ on:
     - cron: '0 0 * * *'  # Daily
   workflow_dispatch:
 
+permissions:
+  contents: write  # Required for pushing README updates
+
 jobs:
   count-loc:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true  # Required for git push
 
       - name: Verify token is available
         run: |
@@ -26,9 +31,12 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y jq cloc
-          curl -sSL https://github.com/XAMPPRocky/tokei/releases/latest/download/tokei-x86_64-unknown-linux-musl.tar.gz | tar xz --wildcards '*/tokei' --strip-components=1
+          # More reliable tokei installation
+          curl -sSL https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-x86_64-unknown-linux-gnu.tar.gz | \
+            tar xzf - --wildcards '*/tokei' --strip-components=1
           sudo mv tokei /usr/local/bin/
-      
+          tokei --version  # Verify installation
+
       - name: Fetch repositories
         id: fetch-repos
         env:
@@ -38,39 +46,17 @@ jobs:
           set -e
           echo "Starting repository fetch for user: $GITHUB_USER"
           
-          # First, verify API access
-          API_RESPONSE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/users/$GITHUB_USER")
-          echo "API user response: $API_RESPONSE"
-          
-          # Fetch first 3 repos for testing
+          # Fetch first 3 repos for testing (keeping your original limit)
           REPOS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/users/$GITHUB_USER/repos?per_page=3" | jq -r '.[].clone_url')
+            "https://api.github.com/users/$GITHUB_USER/repos?per_page=3&sort=updated" | \
+            jq -r '.[].clone_url')
           
           echo "Repositories to process:"
           echo "$REPOS"
           echo "REPOS=$REPOS" >> $GITHUB_ENV
 
-      - name: Debug first repository
-        run: |
-          set -x
-          FIRST_REPO=$(echo "$REPOS" | head -1)
-          echo "Debugging first repo: $FIRST_REPO"
-          
-          git clone --depth 1 "$FIRST_REPO" debug_repo
-          echo "Repository contents:"
-          ls -la debug_repo
-          
-          echo "Tokei output:"
-          tokei debug_repo -o json | jq .
-          
-          echo "CLOC output:"
-          cloc debug_repo --json | jq .
-          
-          rm -rf debug_repo
-
       - name: Count lines of code (all repos)
-        if: success()
+        id: count-loc
         run: |
           set -ex
           TOTAL_LOC=0
@@ -87,8 +73,8 @@ jobs:
             }
             
             # Try both counters
-            LOC_TOKEI=$(tokei -t=All -o json temp_repo | jq '.total.code' || echo 0)
-            LOC_CLOC=$(cloc temp_repo --json | jq '.SUM.code' || echo 0)
+            LOC_TOKEI=$(tokei -t=All -o json temp_repo | jq '.total.code // 0')
+            LOC_CLOC=$(cloc temp_repo --json | jq '.SUM.code // 0')
             
             echo "Tokei: $LOC_TOKEI | CLOC: $LOC_CLOC"
             
@@ -109,9 +95,14 @@ jobs:
       - name: Update README
         if: success() && env.TOTAL_LOC != '0'
         run: |
-          echo "Updating README with total: $TOTAL_LOC"
-          sed -i "s/Total Lines of Code Written: .*/Total Lines of Code Written: $TOTAL_LOC/" README.md
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-          git commit -am "Update total LOC to $TOTAL_LOC [skip ci]"
+          CURRENT_DATE=$(date +"%Y-%m-%d %H:%M:%S")
+          # More robust replacement using comment markers
+          sed -i -e '/<!-- LOC_START -->/,/<!-- LOC_END -->/{
+              /Total Lines of Code:/s/: .*/: '$TOTAL_LOC'/
+          }' -e "s/Last updated: .*/Last updated: $CURRENT_DATE/" README.md
+          
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add README.md
+          git commit -m "📈 Update LOC count to $TOTAL_LOC [skip ci]"
           git push
