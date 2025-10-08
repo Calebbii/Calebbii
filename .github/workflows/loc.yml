@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Required for pushing README updates
+  contents: write
 
 jobs:
   count-loc:
@@ -14,95 +14,87 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: true  # Required for git push
-
-      - name: Verify token is available
-        run: |
-          if [ -z "${{ secrets.PERSONAL_TOKEN }}" ]; then
-            echo "::error::PERSONAL_TOKEN secret is missing or empty"
-            exit 1
-          else
-            echo "Token is available (length: ${#PERSONAL_TOKEN} chars)"
-          fi
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          token: ${{ secrets.PERSONAL_TOKEN }}  # Use token here directly
 
       - name: Install dependencies
         run: |
           sudo apt-get update -y
           sudo apt-get install -y jq cloc
-          # More reliable tokei installation
-          curl -sSL https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-x86_64-unknown-linux-gnu.tar.gz | \
-            tar xzf - --wildcards '*/tokei' --strip-components=1
+          wget -q https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-v12.1.2-x86_64-unknown-linux-gnu.tar.gz
+          tar xzf tokei-*.tar.gz
           sudo mv tokei /usr/local/bin/
-          tokei --version  # Verify installation
 
-      - name: Fetch repositories
-        id: fetch-repos
+      - name: Get repository list
+        id: get-repos
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-          GITHUB_USER: ${{ github.repository_owner }}
         run: |
-          set -e
-          echo "Starting repository fetch for user: $GITHUB_USER"
-          
-          # Fetch first 3 repos for testing (keeping your original limit)
-          REPOS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/users/$GITHUB_USER/repos?per_page=3&sort=updated" | \
-            jq -r '.[].clone_url')
-          
-          echo "Repositories to process:"
-          echo "$REPOS"
-          echo "REPOS=$REPOS" >> $GITHUB_ENV
+          # Use GitHub CLI for more reliable repo listing
+          repos=$(gh repo list ${{ github.repository_owner }} --limit 3 --json url --jq '.[].url')
+          echo "repos<<EOF" >> $GITHUB_OUTPUT
+          echo "$repos" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        # Or if gh isn't available, use this:
+        # run: |
+        #   repos_json=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+        #     "https://api.github.com/users/${{ github.repository_owner }}/repos?per_page=3&sort=updated")
+        #   repos=$(echo "$repos_json" | jq -r '.[].clone_url' | tr '\n' ' ')
+        #   echo "repos=$repos" >> $GITHUB_OUTPUT
 
-      - name: Count lines of code (all repos)
+      - name: Count lines of code
         id: count-loc
+        env:
+          REPOS: ${{ steps.get-repos.outputs.repos }}
         run: |
-          set -ex
+          echo "Processing repositories: $REPOS"
           TOTAL_LOC=0
           COUNT=0
           
-          for REPO in $REPOS; do
+          for repo in $REPOS; do
             ((COUNT++))
-            REPO_NAME=$(basename "$REPO" .git)
-            echo "Processing $COUNT: $REPO_NAME"
+            repo_name=$(basename "$repo" .git)
+            echo "Processing $COUNT: $repo_name from $repo"
             
-            git clone --depth 1 "$REPO" temp_repo || {
-              echo "Clone failed, skipping..."
-              continue
-            }
+            # Clone with authentication
+            git clone --depth 1 "$repo" "temp_repo_$COUNT" || continue
             
-            # Try both counters
-            LOC_TOKEI=$(tokei -t=All -o json temp_repo | jq '.total.code // 0')
-            LOC_CLOC=$(cloc temp_repo --json | jq '.SUM.code // 0')
+            cd "temp_repo_$COUNT"
             
-            echo "Tokei: $LOC_TOKEI | CLOC: $LOC_CLOC"
+            # Try tokei first
+            loc_tokei=$(tokei -t=All -o json | jq '.total.code // 0') || loc_tokei=0
+            echo "Tokei count: $loc_tokei"
             
-            # Use whichever gives a non-zero result
-            if [ "$LOC_CLOC" -gt 0 ]; then
-              LOC=$LOC_CLOC
+            # If tokei fails, try cloc
+            if [ "$loc_tokei" -eq 0 ]; then
+              loc_cloc=$(cloc . --json --quiet | jq '.SUM.code // 0') || loc_cloc=0
+              echo "CLOC count: $loc_cloc"
+              loc=$loc_cloc
             else
-              LOC=$LOC_TOKEI
+              loc=$loc_tokei
             fi
             
-            TOTAL_LOC=$((TOTAL_LOC + LOC))
-            rm -rf temp_repo
+            TOTAL_LOC=$((TOTAL_LOC + loc))
+            echo "Repo $repo_name: $loc lines"
+            cd ..
+            rm -rf "temp_repo_$COUNT"
           done
           
-          echo "Final count: $TOTAL_LOC"
+          echo "Total LOC: $TOTAL_LOC"
           echo "TOTAL_LOC=$TOTAL_LOC" >> $GITHUB_ENV
 
       - name: Update README
-        if: success() && env.TOTAL_LOC != '0'
+        if: env.TOTAL_LOC != '0' && env.TOTAL_LOC != ''
         run: |
-          CURRENT_DATE=$(date +"%Y-%m-%d %H:%M:%S")
-          # More robust replacement using comment markers
-          sed -i -e '/<!-- LOC_START -->/,/<!-- LOC_END -->/{
-              /Total Lines of Code:/s/: .*/: '$TOTAL_LOC'/
-          }' -e "s/Last updated: .*/Last updated: $CURRENT_DATE/" README.md
+          # First, let's see what we're working with
+          echo "Current README content around LOC:"
+          grep -A 2 -B 2 "Lines of Code" README.md || echo "No LOC section found"
           
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          # Update the LOC count
+          sed -i 's/![Lines of Code](https:\/\/img\.shields\.io\/badge\/[^)]*)/![Lines of Code](https:\/\/img\.shields\.io\/badge\/'$TOTAL_LOC'%2B_Lines_Written-8A2BE2?style=for-the-badge&logo=code&logoColor=white)/' README.md
+          
+          # Configure git and push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "📈 Update LOC count to $TOTAL_LOC [skip ci]"
+          git diff --staged --quiet || git commit -m "📈 Update LOC: $TOTAL_LOC"
           git push
