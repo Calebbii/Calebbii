@@ -1,186 +1,354 @@
-
 <h1 align="center"><img src="./name.svg" ></h1>
 
-<p align="center"> 
+<!-- <p align="center"> 
   Visitor count<br>
   <img src="https://profile-counter.glitch.me/calebbii/count.svg" />
-</p>
+</p> -->
 
 
-<!-- ![Lines of code](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2FCalebbii%2FREPO%2Fstats%2Fcode_frequency&query=%24..%5B1%5D&label=Total%20Lines&color=blue) -->
+<table align="center">
+  <tr>
+<!-- Expertise -->
+<td width="50%" align="center" style="padding: 20px;">
+  <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 25px; border-radius: 15px; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); border: 2px solid rgba(255,255,255,0.1); height: 260px; display: flex; flex-direction: column; justify-content: center;">
+    <h3 style="color: white; margin: 0 0 20px 0; font-size: 1.4em; font-weight: 600;">💡 Core Expertise</h3>
+    <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+        <span style="background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 25px; color: white; font-weight: 600; border: 1px solid rgba(255,255,255,0.2);">Python</span>
+        <span style="background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 25px; color: white; font-weight: 600; border: 1px solid rgba(255,255,255,0.2);">Next.js</span>
+        <span style="background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 25px; color: white; font-weight: 600; border: 1px solid rgba(255,255,255,0.2);">Katalon</span>
+        <span style="background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 25px; color: white; font-weight: 600; border: 1px solid rgba(255,255,255,0.2);">Rust</span>
+       </div>
+      <p style="color: rgba(255,255,255,0.9); margin: 15px 0 0 0; font-size: 1em; font-style: italic;">
+        Test Automation & Scalable Systems
+      </p>
+    </div>
+  </div>
+</td>
 
+<!-- Social Links -->
+<td width="50%" align="center" style="padding: 20px;">
+  <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 30px 25px; border-radius: 15px; box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3); border: 2px solid rgba(255,255,255,0.1); height: 260px; display: flex; flex-direction: column; justify-content: center;">
+    <h3 style="color: white; margin: 0 0 25px 0; font-size: 1.4em; font-weight: 600;">🌐 Let's Connect</h3>
+    <div style="display: flex; justify-content: center; gap: 20px;">
+      <a href="https://www.linkedin.com/in/caleb-kiprotich-bii-b141871a6" target="_blank" style="text-decoration: none;">
+        <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 12px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);">
+          <img src="https://skillicons.dev/icons?i=linkedin" width="38" height="38" alt="LinkedIn" style="transition: transform 0.3s ease; border-radius: 8px;" />
+          <p style="color: white; margin: 6px 0 0 0; font-size: 0.85em; font-weight: 500;">LinkedIn</p>
+        </div>
+      </a>
+      <a href="https://x.com/Calebbii3" target="_blank" style="text-decoration: none;">
+        <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 12px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);">
+          <img src="https://skillicons.dev/icons?i=twitter" width="38" height="38" alt="Twitter" style="transition: transform 0.3s ease; border-radius: 8px;" />
+          <p style="color: white; margin: 6px 0 0 0; font-size: 0.85em; font-weight: 500;">Twitter</p>
+        </div>
+      </a>
+      <a href="https://medium.com/@your-medium-handle" target="_blank" style="text-decoration: none;">
+        <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 12px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);">
+          <img src="https://skillicons.dev/icons?i=medium" width="38" height="38" alt="Medium" style="transition: transform 0.3s ease; border-radius: 8px;" />
+          <p style="color: white; margin: 6px 0 0 0; font-size: 0.85em; font-weight: 500;">Medium</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</td>
+  </tr>
+</table>
 
-<h3 align="center">A Full Stack Developer .</h3>
+<style>
+  a div:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.25) !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  }
+  a img:hover {
+    transform: scale(1.1);
+  }
+</style>
 
-<h3 align="center"> 🌱 I’m building <a href="https://www.vennt.io/" target="_blank">R&D</a></h3>
-
-<h3 align="center"> 💬 Ask me about KATALON, Rust and NextJS</h3>
-
-<h3 align="center"> 📫 How to reach me <a href="mailto:biicaleb316@gmail.com">biicaleb316@gmail.com</a></h3>
- 
-<h3 align="center">Connect with me: <p>
-<a href="https://x.com/?t=hVeAvNFroXkObWl8e4VOsg&s=09" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="https://x.com/Calebbii3?t=hVeAvNFroXkObWl8e4VOsg&s=09" height="30" width="40" /></a>
-<a href="https://www.linkedin.com/in/caleb-kiprotich-bii-b141871a6" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="https://www.linkedin.com/in/caleb-kiprotich-bii-b141871a6/" height="30" width="40" /></a>
-</p>
-</h3>
-
-
-<div>
-    <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
-        <img src="https://github-readme-activity-graph.vercel.app/graph?username=Calebbii&theme=xcode&hide_border=true" alt="Activity graph">
-    </a>
+<!-- Smaller Contribution Graph -->
+<h2 align="center">📈 Coding Activity</h2>
+<div align="center">
+  <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
+    <img src="https://github-readme-activity-graph.vercel.app/graph?username=Calebbii&theme=react-dark&hide_border=true&area=true&height=300&custom_title=Caleb's+Development+Activity&color=8A2BE2&line=8A2BE2&point=FFFFFF" alt="Activity Graph" width="90%"/>
+  </a>
 </div>
 
+<h2 align="center">🚀 Tech Stack & Architecture</h2>
 
-
-
-<h2 align="center"> My Github Stats & Technologies I use:</h2>
-
-<table>
+<table align="center" style="border-collapse: collapse; width: 100%;">
+  <!-- Stats Row -->
   <tr>
-    <td>
-      <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-    <img width="390" src="https://github-readme-stats.vercel.app/api?username=Calebbii&theme=transparent&count_private=true&show_icons=true&rank_icon=github&locale=en" alt="Calebbii's GitHub Stats" />
-  </div>
-    </td>
-    <td>
-       <a href="http://www.github.com/calebbii"><img alt="Contribution" src="https://github-readme-streak-stats.herokuapp.com/?user=calebbii&stroke=ffffff&background=1d2a3a&ring=5BCDEC&fire=5BCDEC&currStreakNum=ffffff&currStreakLabel=5BCDEC&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true" /></a>
-    </td>
-    </td>
-    <td>
-      <img width="280" src="https://github-readme-stats.vercel.app/api/top-langs?username=Calebbii&theme=transparent&layout=donut&hide=css,php,ClassASP&langs_count=2&border_radius=10&show_icons=true&locale=en" alt="Calebbii's Most Used Languages" />
-    </td>
-  <tr>
-  <tr>
-    <td>
-      <p align="center">
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="JavaScript" />
-        </a>
-        <p align="center">JavaScript</p>
-      </p>
-    </td>
-    <td>           
-      <p align="center">
-        <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg" width="36" height="36" alt="TypeScript" />
-      </a>
-        <p align="center">TypeScript</p>
-      </p>
-    </td>
-    <td>
-      <p align="center">
-        <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" width="36" height="36" alt="HTML5" />
-        </a>
-        <p align="center">HTML5</p>
-      </p>
+    <td align="center" colspan="3">
+      <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <img width="400" src="https://github-readme-stats.vercel.app/api?username=Calebbii&theme=radical&count_private=true&show_icons=true&rank_icon=github&hide_border=true&include_all_commits=true&bg_color=0d1117&title_color=8A2BE2&icon_color=8A2BE2" alt="GitHub Stats" />
+        <img width="400" src="https://github-readme-streak-stats.herokuapp.com/?user=calebbii&theme=radical&hide_border=true&background=0d1117&ring=8A2BE2&fire=8A2BE2&currStreakLabel=8A2BE2" alt="Contribution Streak" />
+      </div>
     </td>
   </tr>
+  
   <tr>
-    <td>            
-      <p align="center">
-        <a href="https://nextjs.org/docs" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored.svg" width="36" height="36" alt="NextJs" />
-      </a>
-        <p align="center">NextJS</p>
-      </p>
-    </td>
-    <td>
-      <p align="center">
-        <a href="https://python.org/" target="_blank" rel="noreferrer">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" width="36" height="36" alt="Python" />
-      </a>
-        <p align="center">Python</p>
-      </p>
-    </td>
-    <td>
-      <p align="center">
-        <a href="https://www.w3.org/TR/CSS/#css" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" width="36" height="36" alt="CSS3" />
-      </a>
-        <p align="center">CSS</p>
-      </p>
+    <td align="center" colspan="3">
+      <img width="400" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Calebbii&theme=radical&layout=compact&hide_border=true&bg_color=0d1117&title_color=8A2BE2&langs_count=8&hide=html,css,scss,php&exclude_repo=github-readme-stats" alt="Most Used Languages" />
     </td>
   </tr>
 
+  <!-- Frontend Section -->
   <tr>
-    <td>      
-      <p align="center">
-        <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" width="36" height="36" alt="TailwindCSS" />
-        </a>
-        <p align="center">Tailwind</p>
-      </p>
-    </td>
-    <td>            
-      <p align="center">
-        <a href="https://nodejs.org/en/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg" width="36" height="36" alt="NodeJS" />
-      </a>
-        <p align="center">NodeJS</p>
-      </p>
-    </td>
-    <td>           
-      <p align="center">
-        <a href="https://expressjs.com/" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/express-colored.svg" width="36" height="36" alt="Express" />
-        </a>
-        <p align="center">ExpressJS</p>
-      </p>
+    <td colspan="3" align="center" style="padding: 40px 0 20px 0;">
+      <div style="background: rgba(102, 126, 234, 0.1); padding: 12px 25px; border-radius: 10px; border-left: 4px solid #667eea;">
+        <h3 style="margin: 0; color: #667eea; font-size: 1.3em; font-weight: 600;">🌐 Frontend</h3>
+      </div>
     </td>
   </tr>
 
+  <!-- Frontend Technologies -->
   <tr>
-    <td>             
-      <p align="center">
-        <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mongodb-colored.svg" width="36" height="36" alt="MongoDB" />
-        </a>
-        <p align="center">MongoDB</p>
-      </p>
-    </td>
-    <td>
-      <p align="center">
-        <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="36" height="36" alt="React" />
-        </a>
-        <p align="center">React</p>
-      </p>
-    </td>
-    <td>           
-      <p align="center">
-        <a href="https://angular.io/" target="_blank" rel="noreferrer">
-          <img src="https://static-00.iconduck.com/assets.00/file-type-angular-icon-1907x2048-tobdkjt1.png" width="36" height="36" alt="Angular" />
+    <td align="center" style="padding: 25px 15px; background: rgba(102, 126, 234, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(102, 126, 234, 0.1);">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+        <img src="https://skillicons.dev/icons?i=js" width="48" height="48" alt="JavaScript" style="transition: transform 0.3s ease;" />
       </a>
-        <p align="center">Angular</p>
-      </p>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">JavaScript</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">ES6+, Async, Modules</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(102, 126, 234, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(102, 126, 234, 0.1);">
+      <a href="https://www.typescriptlang.org/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=ts" width="48" height="48" alt="TypeScript" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">TypeScript</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Types, Interfaces, Generics</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(102, 126, 234, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(102, 126, 234, 0.1);">
+      <a href="https://reactjs.org/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=react" width="48" height="48" alt="React" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">React</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Hooks, Context, Performance</sub>
     </td>
   </tr>
+
+  <!-- More Frontend -->
   <tr>
-    <td>
-      <p align="center">
-          <a href="https://firebase.google.com/" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/firebase-colored.svg" width="36" height="36" alt="Firebase" />
-          </a>
-        <p align="center">Firebase</p>
-      </p>      
-    </td>
-    <td>
-      <p align="center">
-        <a href="https://www.figma.com/" target="_blank" rel="noreferrer">
-          <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/figma-colored.svg" width="36" height="36" alt="Figma" />
-        </a>
-        <p align="center">Figma</p>
-      </p>
-    </td>
-    <td>
-      <p align="center">
-        <a href="https://katalon.com/" target="_blank" rel="noreferrer">
-          <img src="https://d3ml3b6vywsj0z.cloudfront.net/website/product-images/Katalon.jpg" width="36" height="36" alt="Katalon" />
+    <td align="center" style="padding: 25px 15px; background: rgba(102, 126, 234, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(102, 126, 234, 0.1);">
+      <a href="https://nextjs.org/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=nextjs" width="48" height="48" alt="NextJS" style="transition: transform 0.3s ease;" />
       </a>
-        <p align="center">KATALON</p>
-      </p>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Next.js</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">App Router, SSR, ISR</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(102, 126, 234, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(102, 126, 234, 0.1);">
+      <a href="https://angular.io/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=angular" width="48" height="48" alt="Angular" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Angular</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">RxJS, NgModules, Services</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(102, 126, 234, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(102, 126, 234, 0.1);">
+      <a href="https://tailwindcss.com/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=tailwind" width="48" height="48" alt="Tailwind" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Tailwind</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Utility-First, Responsive</sub>
+    </td>
+  </tr>
+
+  <!-- Backend Section -->
+  <tr>
+    <td colspan="3" align="center" style="padding: 40px 0 20px 0;">
+      <div style="background: rgba(245, 87, 108, 0.1); padding: 12px 25px; border-radius: 10px; border-left: 4px solid #f5576c;">
+        <h3 style="margin: 0; color: #f5576c; font-size: 1.3em; font-weight: 600;">⚡ Backend</h3>
+      </div>
+    </td>
+  </tr>
+
+  <!-- Backend Technologies -->
+  <tr>
+    <td align="center" style="padding: 25px 15px; background: rgba(245, 87, 108, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(245, 87, 108, 0.1);">
+      <a href="https://nodejs.org/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=nodejs" width="48" height="48" alt="Node.js" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Node.js</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Event Loop, Streams, Clusters</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(245, 87, 108, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(245, 87, 108, 0.1);">
+      <a href="https://expressjs.com/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=express" width="48" height="48" alt="Express" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Express.js</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Middleware, Routing, REST</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(245, 87, 108, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(245, 87, 108, 0.1);">
+      <a href="https://python.org/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=py" width="48" height="48" alt="Python" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Python</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Django, Flask, Data Science</sub>
+    </td>
+  </tr>
+
+  <!-- More Backend -->
+  <tr>
+    <td align="center" style="padding: 25px 15px; background: rgba(245, 87, 108, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(245, 87, 108, 0.1);">
+      <a href="https://graphql.org/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=graphql" width="48" height="48" alt="GraphQL" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">GraphQL</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Apollo, Schema Design</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(245, 87, 108, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(245, 87, 108, 0.1);">
+      <a href="https://go.dev/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=go" width="48" height="48" alt="Golang" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Golang</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Concurrency, Performance</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(245, 87, 108, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(245, 87, 108, 0.1);">
+      <a href="https://rust-lang.org/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=rust" width="48" height="48" alt="Rust" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Rust</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Systems Programming</sub>
+    </td>
+  </tr>
+
+  <!-- Databases Section -->
+  <tr>
+    <td colspan="3" align="center" style="padding: 40px 0 20px 0;">
+      <div style="background: rgba(67, 233, 123, 0.1); padding: 12px 25px; border-radius: 10px; border-left: 4px solid #43e97b;">
+        <h3 style="margin: 0; color: #43e97b; font-size: 1.3em; font-weight: 600;">💾 Databases</h3>
+      </div>
+    </td>
+  </tr>
+
+  <!-- Database Technologies -->
+  <tr>
+    <td align="center" style="padding: 25px 15px; background: rgba(67, 233, 123, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(67, 233, 123, 0.1);">
+      <a href="https://www.mongodb.com/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=mongodb" width="48" height="48" alt="MongoDB" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">MongoDB</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Aggregation, Indexing</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(67, 233, 123, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(67, 233, 123, 0.1);">
+      <a href="https://www.postgresql.org/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=postgresql" width="48" height="48" alt="PostgreSQL" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">PostgreSQL</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Complex Queries, Performance</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(67, 233, 123, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(67, 233, 123, 0.1);">
+      <a href="https://redis.io/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=redis" width="48" height="48" alt="Redis" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Redis</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Caching, Pub/Sub</sub>
+    </td>
+  </tr>
+
+  <!-- DevOps & Tools Section -->
+  <tr>
+    <td colspan="3" align="center" style="padding: 40px 0 20px 0;">
+      <div style="background: rgba(79, 172, 254, 0.1); padding: 12px 25px; border-radius: 10px; border-left: 4px solid #4facfe;">
+        <h3 style="margin: 0; color: #4facfe; font-size: 1.3em; font-weight: 600;">🛠️ DevOps & Tools</h3>
+      </div>
+    </td>
+  </tr>
+
+  <!-- DevOps & Tools -->
+  <tr>
+    <td align="center" style="padding: 25px 15px; background: rgba(79, 172, 254, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(79, 172, 254, 0.1);">
+      <a href="https://docker.com/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=docker" width="48" height="48" alt="Docker" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Docker</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Containers, Orchestration</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(79, 172, 254, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(79, 172, 254, 0.1);">
+      <a href="https://aws.amazon.com/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=aws" width="48" height="48" alt="AWS" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">AWS</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">EC2, S3, Lambda, RDS</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(79, 172, 254, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(79, 172, 254, 0.1);">
+      <a href="https://firebase.google.com/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=firebase" width="48" height="48" alt="Firebase" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Firebase</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Auth, Firestore, Functions</sub>
+    </td>
+  </tr>
+
+  <!-- More DevOps & Tools -->
+  <tr>
+    <td align="center" style="padding: 25px 15px; background: rgba(79, 172, 254, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(79, 172, 254, 0.1);">
+      <a href="https://kubernetes.io/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=kubernetes" width="48" height="48" alt="Kubernetes" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Kubernetes</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Container Orchestration</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(79, 172, 254, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(79, 172, 254, 0.1);">
+      <a href="https://git-scm.com/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=git" width="48" height="48" alt="Git" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Git</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Version Control, CI/CD</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(79, 172, 254, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(79, 172, 254, 0.1);">
+      <a href="https://www.figma.com/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=figma" width="48" height="48" alt="Figma" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Figma</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">UI/UX Design, Prototyping</sub>
+    </td>
+  </tr>
+
+  <!-- Testing & Build Tools -->
+  <tr>
+    <td align="center" style="padding: 25px 15px; background: rgba(79, 172, 254, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(79, 172, 254, 0.1);">
+      <a href="https://katalon.com/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=selenium" width="48" height="48" alt="Katalon" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Katalon</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Test Automation, QA</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(79, 172, 254, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(79, 172, 254, 0.1);">
+      <a href="https://jestjs.io/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=jest" width="48" height="48" alt="Jest" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Jest</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Testing Framework</sub>
+    </td>
+    <td align="center" style="padding: 25px 15px; background: rgba(79, 172, 254, 0.03); border-radius: 10px; margin: 10px; border: 1px solid rgba(79, 172, 254, 0.1);">
+      <a href="https://vitejs.dev/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=vite" width="48" height="48" alt="Vite" style="transition: transform 0.3s ease;" />
+      </a>
+      <p style="margin: 10px 0 5px 0;"><strong style="font-size: 1em;">Vite</strong></p>
+      <sub style="color: #666; font-size: 0.8em;">Fast Build Tool</sub>
     </td>
   </tr>
 </table>
+
+<br>
+
+<div align="center">
+  
+  <!-- **📊 Weekly Development Analytics**
+  
+  <!-- WakaTime Stats (Optional) -->
+  <!-- [![wakatime](https://wakatime.com/badge/user/your-wakatime-id.svg)](https://wakatime.com/@Calebbii) --> -->
+  
+</div>
+
+<style>
+  /* Hover effects for icons */
+  a img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Smooth transitions */
+  td {
+    transition: all 0.3s ease;
+  }
+</style>
