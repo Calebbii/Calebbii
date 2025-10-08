@@ -179,8 +179,9 @@
         <a href="https://katalon.com/" target="_blank" rel="noreferrer">
           <img src="https://d3ml3b6vywsj0z.cloudfront.net/website/product-images/Katalon.jpg" width="36" height="36" alt="Katalon" />
       </a>
-        <p align="center">KATALON</p>
+        <p align="center">Katalon</p>
       </p>
     </td>
   </tr>
+
 </table>
