@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PERSONAL_TOKEN }}  # Use token here directly
+          token: ${{ secrets.PERSONAL_TOKEN_1 }}  # Use token here directly
 
       - name: Install dependencies
         run: |
@@ -27,7 +27,7 @@ jobs:
       - name: Get repository list
         id: get-repos
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN_1 }}
         run: |
           # Use GitHub CLI for more reliable repo listing
           repos=$(gh repo list ${{ github.repository_owner }} --limit 3 --json url --jq '.[].url')
