@@ -6,54 +6,7 @@
 </p> -->
 
 
-<table align="center">
-  <tr>
-<!-- Expertise -->
-<td width="50%" align="center" style="padding: 20px;">
-  <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 25px; border-radius: 15px; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); border: 2px solid rgba(255,255,255,0.1); height: 260px; display: flex; flex-direction: column; justify-content: center;">
-    <h3 style="color: white; margin: 0 0 20px 0; font-size: 1.4em; font-weight: 600;">💡 Core Expertise</h3>
-    <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
-        <span style="background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 25px; color: white; font-weight: 600; border: 1px solid rgba(255,255,255,0.2);">Python</span>
-        <span style="background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 25px; color: white; font-weight: 600; border: 1px solid rgba(255,255,255,0.2);">Next.js</span>
-        <span style="background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 25px; color: white; font-weight: 600; border: 1px solid rgba(255,255,255,0.2);">Katalon</span>
-        <span style="background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 25px; color: white; font-weight: 600; border: 1px solid rgba(255,255,255,0.2);">Rust</span>
-       </div>
-      <p style="color: rgba(255,255,255,0.9); margin: 15px 0 0 0; font-size: 1em; font-style: italic;">
-        Test Automation & Scalable Systems
-      </p>
-    </div>
-  </div>
-</td>
 
-<!-- Social Links -->
-<td width="50%" align="center" style="padding: 20px;">
-  <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 30px 25px; border-radius: 15px; box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3); border: 2px solid rgba(255,255,255,0.1); height: 260px; display: flex; flex-direction: column; justify-content: center;">
-    <h3 style="color: white; margin: 0 0 25px 0; font-size: 1.4em; font-weight: 600;">🌐 Let's Connect</h3>
-    <div style="display: flex; justify-content: center; gap: 20px;">
-      <a href="https://www.linkedin.com/in/caleb-kiprotich-bii-b141871a6" target="_blank" style="text-decoration: none;">
-        <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 12px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);">
-          <img src="https://skillicons.dev/icons?i=linkedin" width="38" height="38" alt="LinkedIn" style="transition: transform 0.3s ease; border-radius: 8px;" />
-          <p style="color: white; margin: 6px 0 0 0; font-size: 0.85em; font-weight: 500;">LinkedIn</p>
-        </div>
-      </a>
-      <a href="https://x.com/Calebbii3" target="_blank" style="text-decoration: none;">
-        <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 12px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);">
-          <img src="https://skillicons.dev/icons?i=twitter" width="38" height="38" alt="Twitter" style="transition: transform 0.3s ease; border-radius: 8px;" />
-          <p style="color: white; margin: 6px 0 0 0; font-size: 0.85em; font-weight: 500;">Twitter</p>
-        </div>
-      </a>
-      <a href="https://medium.com/@your-medium-handle" target="_blank" style="text-decoration: none;">
-        <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 12px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);">
-          <img src="https://skillicons.dev/icons?i=medium" width="38" height="38" alt="Medium" style="transition: transform 0.3s ease; border-radius: 8px;" />
-          <p style="color: white; margin: 6px 0 0 0; font-size: 0.85em; font-weight: 500;">Medium</p>
-        </div>
-      </a>
-    </div>
-  </div>
-</td>
-  </tr>
-</table>
 
 <style>
   a div:hover {
