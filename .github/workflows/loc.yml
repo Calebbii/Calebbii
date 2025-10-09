@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Required for pushing README updates
+  contents: write
 
 jobs:
   count-loc:
@@ -14,95 +14,109 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: true  # Required for git push
-
-      - name: Verify token is available
-        run: |
-          if [ -z "${{ secrets.PERSONAL_TOKEN }}" ]; then
-            echo "::error::PERSONAL_TOKEN secret is missing or empty"
-            exit 1
-          else
-            echo "Token is available (length: ${#PERSONAL_TOKEN} chars)"
-          fi
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          token: ${{ secrets.PERSONAL_TOKEN_1 }}
 
       - name: Install dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y jq cloc
-          # More reliable tokei installation
-          curl -sSL https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-x86_64-unknown-linux-gnu.tar.gz | \
-            tar xzf - --wildcards '*/tokei' --strip-components=1
+          sudo apt-get install -y jq cloc curl
+          
+          # Install tokei - fixed method
+          curl -sL https://github.com/XAMPPRocky/tokei/releases/latest/download/tokei-x86_64-unknown-linux-gnu.tar.gz -o tokei.tar.gz
+          tar xzf tokei.tar.gz
           sudo mv tokei /usr/local/bin/
-          tokei --version  # Verify installation
+          rm tokei.tar.gz
+          
+          echo "✅ Dependencies installed successfully"
 
-      - name: Fetch repositories
-        id: fetch-repos
+      - name: Get repository list
+        id: get-repos
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-          GITHUB_USER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN_1 }}
         run: |
-          set -e
-          echo "Starting repository fetch for user: $GITHUB_USER"
+          # Use GitHub API directly
+          repos_json=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/users/${{ github.repository_owner }}/repos?per_page=3&sort=updated")
           
-          # Fetch first 3 repos for testing (keeping your original limit)
-          REPOS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/users/$GITHUB_USER/repos?per_page=3&sort=updated" | \
-            jq -r '.[].clone_url')
+          echo "repos<<EOF" >> $GITHUB_OUTPUT
+          echo "$repos_json" | jq -r '.[].clone_url' >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
           
-          echo "Repositories to process:"
-          echo "$REPOS"
-          echo "REPOS=$REPOS" >> $GITHUB_ENV
+          echo "Found repositories:"
+          echo "$repos_json" | jq -r '.[].name'
 
-      - name: Count lines of code (all repos)
+      - name: Count lines of code
         id: count-loc
+        env:
+          REPOS: ${{ steps.get-repos.outputs.repos }}
         run: |
-          set -ex
+          echo "Starting LOC count..."
           TOTAL_LOC=0
           COUNT=0
           
-          for REPO in $REPOS; do
+          while IFS= read -r repo; do
+            [[ -z "$repo" ]] && continue
             ((COUNT++))
-            REPO_NAME=$(basename "$REPO" .git)
-            echo "Processing $COUNT: $REPO_NAME"
+            repo_name=$(basename "$repo" .git)
+            echo "📁 Processing $COUNT: $repo_name"
             
-            git clone --depth 1 "$REPO" temp_repo || {
-              echo "Clone failed, skipping..."
-              continue
-            }
-            
-            # Try both counters
-            LOC_TOKEI=$(tokei -t=All -o json temp_repo | jq '.total.code // 0')
-            LOC_CLOC=$(cloc temp_repo --json | jq '.SUM.code // 0')
-            
-            echo "Tokei: $LOC_TOKEI | CLOC: $LOC_CLOC"
-            
-            # Use whichever gives a non-zero result
-            if [ "$LOC_CLOC" -gt 0 ]; then
-              LOC=$LOC_CLOC
+            # Clone repository
+            if git clone --quiet --depth 1 "$repo" "temp_repo_$COUNT" 2>/dev/null; then
+              cd "temp_repo_$COUNT"
+              
+              # Count lines with tokei
+              loc=$(tokei -t=All --output json | jq '.total.code // 0') || loc=0
+              
+              # Fallback to cloc if tokei fails
+              if [[ "$loc" -eq 0 || "$loc" == "null" ]]; then
+                loc=$(cloc . --json --quiet 2>/dev/null | jq '.SUM.code // 0') || loc=0
+              fi
+              
+              echo "   📊 $repo_name: $loc lines"
+              TOTAL_LOC=$((TOTAL_LOC + loc))
+              cd ..
+              rm -rf "temp_repo_$COUNT"
             else
-              LOC=$LOC_TOKEI
+              echo "   ❌ Failed to clone $repo_name"
             fi
-            
-            TOTAL_LOC=$((TOTAL_LOC + LOC))
-            rm -rf temp_repo
-          done
+          done <<< "$REPOS"
           
-          echo "Final count: $TOTAL_LOC"
+          echo "Total LOC across $COUNT repositories: $TOTAL_LOC"
           echo "TOTAL_LOC=$TOTAL_LOC" >> $GITHUB_ENV
 
-      - name: Update README
-        if: success() && env.TOTAL_LOC != '0'
+      - name: Update README with LOC badge
+        if: env.TOTAL_LOC != '0' && env.TOTAL_LOC != ''
+        env:
+          TOTAL_LOC: ${{ env.TOTAL_LOC }}
         run: |
-          CURRENT_DATE=$(date +"%Y-%m-%d %H:%M:%S")
-          # More robust replacement using comment markers
-          sed -i -e '/<!-- LOC_START -->/,/<!-- LOC_END -->/{
-              /Total Lines of Code:/s/: .*/: '$TOTAL_LOC'/
-          }' -e "s/Last updated: .*/Last updated: $CURRENT_DATE/" README.md
+          echo "Updating README with $TOTAL_LOC lines of code..."
           
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          # Format the number with commas
+          FORMATTED_LOC=$(printf "%'d" $TOTAL_LOC)
+          
+          # Create badge URL
+          BADGE_URL="https://img.shields.io/badge/Total%20Code-$FORMATTED_LOC%20lines-8A2BE2?style=for-the-badge&logo=visual-studio-code&logoColor=white"
+          
+          # Update README - first check if section exists
+          if grep -q "Total Code" README.md; then
+            sed -i "s|https://img.shields.io/badge/Total%20Code-[^)]*|$BADGE_URL|g" README.md
+          else
+            # Add new section
+            echo "" >> README.md
+            echo "## 📊 Development Metrics" >> README.md
+            echo "" >> README.md
+            echo "![Total Code]($BADGE_URL)" >> README.md
+          fi
+          
+          # Configure git and push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "📈 Update LOC count to $TOTAL_LOC [skip ci]"
-          git push
+          
+          if ! git diff --staged --quiet; then
+            git commit -m "📈 Update LOC: $FORMATTED_LOC lines"
+            git push
+            echo "✅ README updated successfully!"
+          else
+            echo "✅ No changes needed"
+          fi
