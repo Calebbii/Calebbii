@@ -1,0 +1,63 @@
+name: LOC Counter
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+  workflow_dispatch:      # Manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-loc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Count lines of code
+        id: count-loc
+        run: |
+          echo "🔢 Counting lines of code..."
+          
+          # Install cloc if not available
+          sudo apt-get update -y
+          sudo apt-get install -y cloc
+          
+          # Count lines of code
+          LOC=$(cloc . --quiet --json 2>/dev/null | jq -r '.SUM.code // 0' || echo "0")
+          
+          echo "Total LOC: $LOC"
+          echo "LOC_COUNT=$LOC" >> $GITHUB_ENV
+
+      - name: Update README badge
+        if: env.LOC_COUNT != '0'
+        run: |
+          # Format number with commas
+          if command -v printf > /dev/null; then
+            FORMATTED_LOC=$(printf "%'d" $LOC_COUNT)
+          else
+            FORMATTED_LOC=$LOC_COUNT
+          fi
+          
+          echo "📝 Updating README with $FORMATTED_LOC lines..."
+          
+          # Create badge URL
+          BADGE_URL="https://img.shields.io/badge/Total%20LOC-$FORMATTED_LOC%20lines-8A2BE2?style=for-the-badge&logo=visual-studio-code&logoColor=white"
+          
+          # Update the badge in README
+          sed -i "s|https://img.shields.io/badge/Total%20LOC-[^)]*|$BADGE_URL|" README.md
+          
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Commit and push changes
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "✅ No changes needed"
+          else
+            git commit -m "📈 Update LOC: $FORMATTED_LOC lines"
+            git push
+            echo "✅ README updated successfully!"
+          fi
