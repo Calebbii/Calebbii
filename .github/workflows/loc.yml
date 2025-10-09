@@ -15,48 +15,53 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.PERSONAL_TOKEN }}
-          persist-credentials: false  # Important: set to false when using token
-
-      - name: Verify token is available
-        run: |
-          if [ -z "${{ secrets.PERSONAL_TOKEN }}" ]; then
-            echo "::error::PERSONAL_TOKEN secret is missing or empty"
-            exit 1
-          else
-            echo "✅ Token is available"
-          fi
 
       - name: Install dependencies
         run: |
           sudo apt-get update -y
           sudo apt-get install -y jq cloc curl
           
-          # Install tokei - fixed method
-          curl -sSL https://github.com/XAMPPRocky/tokei/releases/latest/download/tokei-x86_64-unknown-linux-gnu.tar.gz -o tokei.tar.gz
-          tar xzf tokei.tar.gz
-          sudo mv tokei /usr/local/bin/
-          rm tokei.tar.gz
+          echo "🔧 Installing code analysis tools..."
           
-          echo "✅ Tokei version: $(tokei --version)"
+          # Install tokei - direct binary method
+          echo "📥 Downloading tokei..."
+          TOKEI_URL="https://github.com/XAMPPRocky/tokei/releases/latest/download/tokei-x86_64-unknown-linux-gnu"
+          if curl -sSL -o tokei "$TOKEI_URL"; then
+            chmod +x tokei
+            sudo mv tokei /usr/local/bin/
+            echo "✅ Tokei installed successfully"
+          else
+            echo "❌ Tokei download failed - will use cloc only"
+          fi
+          
+          # Verify tools
+          echo "📋 Installed tools:"
+          command -v jq && echo "  ✅ jq"
+          command -v cloc && echo "  ✅ cloc" 
+          command -v tokei && echo "  ✅ tokei"
 
       - name: Fetch repositories
         id: fetch-repos
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         run: |
-          echo "🔍 Fetching repositories for user: ${{ github.repository_owner }}"
+          echo "🔍 Fetching repositories for: ${{ github.repository_owner }}"
           
           # Get repositories using GitHub API
           response=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
             "https://api.github.com/users/${{ github.repository_owner }}/repos?per_page=3&sort=updated")
           
           # Extract clone URLs
-          REPOS=$(echo "$response" | jq -r '.[].clone_url')
+          REPOS=$(echo "$response" | jq -r '.[].clone_url // empty')
           
-          echo "📂 Repositories to process:"
+          if [ -z "$REPOS" ]; then
+            echo "❌ No repositories found or API call failed"
+            echo "API Response: $response"
+            exit 1
+          fi
+          
+          echo "📂 Found repositories:"
           echo "$REPOS"
-          
-          # Store in environment for next steps
           echo "REPOS<<EOF" >> $GITHUB_ENV
           echo "$REPOS" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
@@ -70,38 +75,25 @@ jobs:
           TOTAL_LOC=0
           COUNT=0
           
-          # Check if we have repositories
-          if [ -z "$REPOS" ]; then
-            echo "❌ No repositories found to process"
-            exit 1
-          fi
-          
           for REPO in $REPOS; do
             ((COUNT++))
             REPO_NAME=$(basename "$REPO" .git)
             echo "📁 Processing $COUNT: $REPO_NAME"
             
-            # Clone with authentication
+            # Clone repository
             if git clone --quiet --depth 1 "$REPO" "temp_repo_$COUNT" 2>/dev/null; then
               cd "temp_repo_$COUNT"
               
-              # Try tokei first
-              LOC_TOKEI=$(tokei -t=All --output json | jq '.total.code // 0') || LOC_TOKEI=0
-              
-              # Fallback to cloc
-              LOC_CLOC=$(cloc . --json --quiet 2>/dev/null | jq '.SUM.code // 0') || LOC_CLOC=0
-              
-              echo "   Tokei: $LOC_TOKEI | CLOC: $LOC_CLOC"
-              
-              # Use the larger count (usually more accurate)
-              if [ "$LOC_CLOC" -gt "$LOC_TOKEI" ]; then
-                LOC=$LOC_CLOC
+              # Try tokei if available, otherwise use cloc
+              if command -v tokei &> /dev/null; then
+                LOC=$(tokei -t=All --output json | jq '.total.code // 0') || LOC=0
+                echo "   📊 (tokei): $LOC lines"
               else
-                LOC=$LOC_TOKEI
+                LOC=$(cloc . --json --quiet 2>/dev/null | jq '.SUM.code // 0') || LOC=0
+                echo "   📊 (cloc): $LOC lines"
               fi
               
               TOTAL_LOC=$((TOTAL_LOC + LOC))
-              echo "   ✅ $REPO_NAME: $LOC lines"
               cd ..
               rm -rf "temp_repo_$COUNT"
             else
@@ -109,7 +101,7 @@ jobs:
             fi
           done
           
-          echo "📊 Total LOC across $COUNT repositories: $TOTAL_LOC"
+          echo "📈 Total LOC across $COUNT repositories: $TOTAL_LOC"
           echo "TOTAL_LOC=$TOTAL_LOC" >> $GITHUB_ENV
 
       - name: Update README with LOC badge
@@ -117,33 +109,28 @@ jobs:
         env:
           TOTAL_LOC: ${{ env.TOTAL_LOC }}
         run: |
-          echo "📝 Updating README with $TOTAL_LOC lines of code..."
+          echo "📝 Updating README with $TOTAL_LOC lines..."
           
-          # Format number with commas
+          # Format number
           FORMATTED_LOC=$(printf "%'d" $TOTAL_LOC)
-          
-          # Create badge URL
           BADGE_URL="https://img.shields.io/badge/Total%20Code-$FORMATTED_LOC%20lines-8A2BE2?style=for-the-badge&logo=visual-studio-code&logoColor=white"
           
-          # Check if LOC section exists in README
+          # Update or add LOC section
           if grep -q "Total Code" README.md; then
-            echo "🔄 Updating existing LOC badge..."
             sed -i "s|https://img.shields.io/badge/Total%20Code-[^)]*|$BADGE_URL|g" README.md
           else
-            echo "➕ Adding new LOC section to README..."
             echo -e "\n## 📊 Development Metrics\n\n![Total Code]($BADGE_URL)" >> README.md
           fi
           
-          # Configure git
+          # Commit changes
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Commit and push changes
           git add README.md
-          if git diff --staged --quiet; then
-            echo "✅ No changes needed"
-          else
+          
+          if ! git diff --staged --quiet; then
             git commit -m "📈 Update LOC: $FORMATTED_LOC lines"
             git push
             echo "✅ README updated successfully!"
+          else
+            echo "✅ No changes needed"
           fi
