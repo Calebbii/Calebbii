@@ -1,18 +1,15 @@
 
 <h1 align="center"><img src="./name.svg" ></h1>
 
-<p align="center"> 
-  Visitor count<br>
-  <img src="https://profile-counter.glitch.me/calebbii/count.svg" />
-</p>
+
 
 
 <!-- ![Lines of code](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2FCalebbii%2FREPO%2Fstats%2Fcode_frequency&query=%24..%5B1%5D&label=Total%20Lines&color=blue) -->
-<center>
+<p align="center">
 
 ![Lines of Code](https://img.shields.io/badge/Total%20LOC-0%20lines-8A2BE2?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-</center>
+</p>
 
 <h3 align="center">A Full Stack Developer .</h3>
 
