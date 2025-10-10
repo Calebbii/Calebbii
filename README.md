@@ -8,7 +8,11 @@
 
 
 <!-- ![Lines of code](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2FCalebbii%2FREPO%2Fstats%2Fcode_frequency&query=%24..%5B1%5D&label=Total%20Lines&color=blue) -->
+<center>
 
+![Lines of Code](https://img.shields.io/badge/Total%20LOC-0%20lines-8A2BE2?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+
+</center>
 
 <h3 align="center">A Full Stack Developer .</h3>
 
